@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserService } from 'src/app/services/user.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-all-users',
@@ -9,10 +11,24 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./all-users.component.css']
 })
 export class AllUsersComponent implements OnInit {
-
-  constructor() { }
+  userService: UserService = inject(UserService);
+  users: any;
+  hasLoaded: boolean = false;
+  
+  constructor() {}
 
   ngOnInit() {
+    this.userService.getUsers()
+    .pipe(map((response: any) => response.data))
+    .subscribe({
+      next: response => {
+        setTimeout(() => {
+          console.log(response);
+          this.users = response;
+          this.hasLoaded = true;
+        }, 2000);
+      }
+    })
   }
 
 }

@@ -1,1 +1,9 @@
 <h1>All Users Page</h1>
+<ng-template *ngIf="hasLoaded; then userBlock else noUserBlock"></ng-template>
+<ng-template #userBlock>
+    {{users.data | json}}
+</ng-template>
+<ng-template #noUserBlock>
+    <h1>Loading Users...</h1>
+</ng-template>
+
