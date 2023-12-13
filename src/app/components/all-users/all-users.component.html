@@ -1,7 +1,26 @@
 <h1>All Users Page</h1>
 <ng-template *ngIf="hasLoaded; then userBlock else noUserBlock"></ng-template>
 <ng-template #userBlock>
-    {{users.data | json}}
+    <div style="display: flex; justify-content: center;">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Avatar</th>
+            </tr>
+            @for (user of users; track $index) {
+                <tr (click)="viewUserDetails(user.id)" title="Click for details">
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><img src="{{user.avatar}}"></td>
+                </tr>
+            }
+        </table>
+    </div>
 </ng-template>
 <ng-template #noUserBlock>
     <h1>Loading Users...</h1>

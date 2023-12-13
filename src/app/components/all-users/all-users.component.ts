@@ -2,6 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 import { map } from 'rxjs';
+import { User } from 'src/app/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-users',
@@ -12,8 +14,9 @@ import { map } from 'rxjs';
 })
 export class AllUsersComponent implements OnInit {
   userService: UserService = inject(UserService);
-  users: any;
+  users: User[] = [] // type: array of User(s)
   hasLoaded: boolean = false;
+  router: Router = inject(Router);
   
   constructor() {}
 
@@ -26,9 +29,14 @@ export class AllUsersComponent implements OnInit {
           console.log(response);
           this.users = response;
           this.hasLoaded = true;
-        }, 2000);
+        }, 200);
       }
     })
+  }
+
+  viewUserDetails(id: number){
+    console.log("hello");
+    this.router.navigate(["users", id]);
   }
 
 }
