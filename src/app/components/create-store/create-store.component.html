@@ -1,0 +1,27 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <div>
+        <label>Firstname<span class="text-danger">*</span></label>
+        <input formControlName="firstname" placeholder="e.g. Ioannis">
+        <span class="text-danger" *ngIf="form.get('firstname')?.hasError('required') && form.get('firstname')?.touched">Required</span>
+    </div>
+    <div>
+        <label>Lastname<span class="text-danger">*</span></label>
+        <input formControlName="lastname" placeholder="e.g. Daniil">
+        <span class="text-danger" *ngIf="form.get('lastname')?.hasError('required') && form.get('lastname')?.touched">Required</span>
+    </div>
+    <div>
+        <label>Receive Notification</label>
+        <input type="checkbox" formControlName="receiveNotifications">
+    </div>
+    <div>
+        <label>Stars</label>
+        <input type="radio" name="stars" formControlName="stars" value="1">
+        <input type="radio" name="stars" formControlName="stars" value="2">
+        <input type="radio" name="stars" formControlName="stars" value="3">
+        <input type="radio" name="stars" formControlName="stars" value="4">
+        <input type="radio" name="stars" formControlName="stars" value="5">
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
