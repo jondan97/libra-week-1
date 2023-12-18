@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 import { map } from 'rxjs';
-import { User } from 'src/app/user';
+import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 
 @Component({

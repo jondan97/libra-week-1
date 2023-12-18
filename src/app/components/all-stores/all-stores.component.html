@@ -1,0 +1,6 @@
+<ng-template *ngIf="selectedStore; then selectedStoreBlock"></ng-template>
+<ng-template #selectedStoreBlock>
+    {{selectedStore?.name}}: {{selectedStore?.address}}
+</ng-template>
+
+<app-first-five-stores [firstFiveStores]="stores" (actionEventEmitter)="selectStore($event)"></app-first-five-stores>

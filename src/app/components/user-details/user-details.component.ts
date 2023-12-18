@@ -1,9 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/user';
+import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { map } from 'rxjs';
+import { FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-user-details',
@@ -36,5 +37,4 @@ export class UserDetailsComponent implements OnInit {
       }
     })
   }
-
 }
