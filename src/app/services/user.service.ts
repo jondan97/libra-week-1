@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
 @Injectable({
@@ -10,11 +10,18 @@ export class UserService {
 
   constructor() { }
 
-  getUsers(){
+  getUsers() {
     return this.http.get(this.endpointUrl);
   }
 
-  getUserById(id:number){
+  getMostFamousUsers() {
+    let customHeaders = new HttpHeaders({
+      'fetch-type': 'most-famous-stores-in-general',
+    });
+    return this.http.get(this.endpointUrl, {headers: customHeaders});
+  }
+
+  getUserById(id: number) {
     return this.http.get(this.endpointUrl + "/" + id);
   }
 }
